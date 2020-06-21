@@ -11,17 +11,19 @@ const productRoute = require('./routes/products');
 //const usersRoute = require('./routes/users');
 const orderRoute = require('./routes/orders');
 
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'PUT', 'DELETE', 'PATCH', 'POST'],
+  allowedHeaders: 'Content-Type, Authorization, Origin, X-Requested-With, Accept'
+}))
+
 // Use Routes
 //app.use('/api/users', usersRoute);
 app.use('/api/products', productRoute);
 //app.use('/api/auth', authRoute);
 app.use('/api/orders', orderRoute);
 
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'PUT', 'DELETE', 'PATCH', 'POST'],
-  allowedHeaders: 'Content-Type, Authorization, Origin, X-Requested-With, Accept'
-}))
+
 
 
 app.use(logger('dev'));
